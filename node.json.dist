@@ -1,0 +1,24 @@
+{
+ "mysql": {
+    "server_root_password": "youshouldchangeme",
+    "server_repl_password": "youshouldchangeme",
+    "server_debian_password": "youshouldchangeme"
+  },
+  "users": {
+     "jenkins": {
+       "rsa": ""
+       "rsa.pub": ""
+       "authorized_keys": [ 
+           ""
+       ],
+       "known_hosts": [
+           ""
+       ]
+    }
+  },
+  "run_list": [
+      "recipe[mysql::client]",
+      "recipe[mysql::server]",
+      "recipe[tuleapci::base]" 
+   ]
+}
