@@ -10,20 +10,20 @@ directory "/home/jenkins/.ssh" do
     action :create
 end
 
-file "/home/jenkins/.ssh/authorized_keys" do
-    owner "jenkins"
-    group "jenkins"
-    content node['users']['jenkins']['authorized_keys'].join("\n")
-    mode 00600
-    action :create
-end
+# file "/home/jenkins/.ssh/authorized_keys" do
+#     owner "jenkins"
+#     group "jenkins"
+#     content node['users']['jenkins']['authorized_keys'].join("\n")
+#     mode 00600
+#     action :create
+# end
 
 file "/home/jenkins/.ssh/known_hosts" do
     owner "jenkins"
     group "jenkins"
     content node['users']['jenkins']['known_hosts'].join("\n")
     mode 00600
-    action :create
+    action :create_if_missing
 end
 
 # Add ssh private key
@@ -32,7 +32,7 @@ file "/home/jenkins/.ssh/id_rsa" do
   group   "jenkins"
   mode    00600
   content node['users']['jenkins']['rsa']
-  action  :create
+  action  :create_if_missing
 end
 
 file "/home/jenkins/.ssh/id_rsa.pub" do
@@ -40,8 +40,8 @@ file "/home/jenkins/.ssh/id_rsa.pub" do
   group   "jenkins"
   mode    00600
   content node['users']['jenkins']['rsa.pub']
-  action  :create
+  action  :create_if_missing
 end
 
 # Jenkins dependencies                                                      
-package 'java-1.7.0-openjdk'
+# package 'java-1.7.0-openjdk'
