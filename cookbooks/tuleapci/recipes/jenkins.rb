@@ -1,24 +1,4 @@
-user "jenkins" do
-   supports :manage_home => true
-   action :create 
-end
-
-directory "/home/jenkins/.ssh" do
-    owner "jenkins"
-    group "jenkins"
-    mode  00700
-    action :create
-end
-
-# file "/home/jenkins/.ssh/authorized_keys" do
-#     owner "jenkins"
-#     group "jenkins"
-#     content node['users']['jenkins']['authorized_keys'].join("\n")
-#     mode 00600
-#     action :create
-# end
-
-file "/home/jenkins/.ssh/known_hosts" do
+file "/jenkins/.ssh/known_hosts" do
     owner "jenkins"
     group "jenkins"
     content node['users']['jenkins']['known_hosts'].join("\n")
@@ -27,7 +7,7 @@ file "/home/jenkins/.ssh/known_hosts" do
 end
 
 # Add ssh private key
-file "/home/jenkins/.ssh/id_rsa" do
+file "/jenkins/.ssh/id_rsa" do
   owner   "jenkins"
   group   "jenkins"
   mode    00600
@@ -35,7 +15,7 @@ file "/home/jenkins/.ssh/id_rsa" do
   action  :create_if_missing
 end
 
-file "/home/jenkins/.ssh/id_rsa.pub" do
+file "/jenkins/.ssh/id_rsa.pub" do
   owner   "jenkins"
   group   "jenkins"
   mode    00600
