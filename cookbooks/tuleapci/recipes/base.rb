@@ -1,6 +1,8 @@
 include_recipe 'tuleapci::jenkins'
 
-package 'docker'
+execute "Install docker" do
+  command "curl -sSL https://get.docker.io/ubuntu/ | sh"
+end
 
 group 'docker' do
   action :modify
