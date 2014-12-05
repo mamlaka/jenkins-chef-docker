@@ -1,3 +1,4 @@
+name             "tuleapci"
 maintainer       "Enalean"
 maintainer_email "crew@enalean.com"
 license          "GPLv2+"
